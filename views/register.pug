@@ -1,21 +1,25 @@
 extends layouts/register-layout.pug
 
 block content
-    .loginContainer
-        h1 Register
-        form#registerForm(method="post", onsubmit="event.preventDefault(); validateForm();")
+    .loginWrapper
+        .RegLogoContainer 
+            a.blue(href="/")
+                i.fa-solid.fa-head-side-mask.logoIcon(aria-label="Logo")
+        .RegContainer
+            h1 Register
+            form#registerForm(method="post", onsubmit="event.preventDefault(); validateForm();")
 
-            p.errorMessage #{errorMessage}
+                p.errorMessage #{errorMessage}
 
-            input(type="text", name="firstName", placeholder="First name", value=firstName required="")
-            input(type="text", name="lastName", placeholder="Last name", value=lastName required="")
-            input(type="text", name="username", placeholder="Username", value=username required="")
-            input(type="email", name="email", placeholder="Email", value=email required="")
-            input#password(type="password", name="password", placeholder="Password", required="")
-            input#passwordConf(type="password", name="passwordConf", placeholder="Confirm password", required="")
-            input(type="submit", value="Register")
+                input(type="text", name="firstName", placeholder="First name", value=firstName required="")
+                input(type="text", name="lastName", placeholder="Last name", value=lastName required="")
+                input(type="text", name="username", placeholder="Username", value=username required="")
+                input(type="email", name="email", placeholder="Email", value=email required="")
+                input#password(type="password", name="password", placeholder="Password", required="")
+                input#passwordConf(type="password", name="passwordConf", placeholder="Confirm password", required="")
+                input(type="submit", value="Register")
 
-        a(href="/login") Already have an account? Login here.
+            a(href="/login") Already have an account? Login here.
     
 
 
@@ -32,3 +36,5 @@ block content
                 form.submit();
             }
         }
+
+    script(src='https://kit.fontawesome.com/88de53f489.js', crossorigin='anonymous')

@@ -1,13 +1,21 @@
 extends layouts/login-layout.pug
 
 block content
-    .loginContainer
-        h1 Login
-        form(method="post")
+    .loginWrapper
+        .logoContainer 
+            a.blue(href="/")
+                i.fa-solid.fa-head-side-mask.logoIcon(aria-label="Logo")
+        .loginContainer
+            h1 Login
+            form(method="post")
 
-            p.errorMessage #{errorMessage}
+                p.errorMessage #{errorMessage}
 
-            input(type="text", name="logUsername", placeholder="Username or email", value=logUsername required="")
-            input(type="password", name="logPassword", placeholder="Password", required="")
-            input(type="submit", value="Login")
-        a(href="/register") Need an account? Register here. 
+                input(type="text", name="logUsername", placeholder="Username or email", value=logUsername required="")
+                input(type="password", name="logPassword", placeholder="Password", required="")
+                input(type="submit", value="Login")
+            a(href="/register") Need an account? Register here. 
+
+    
+    script(src='https://kit.fontawesome.com/88de53f489.js', crossorigin='anonymous')
+        
