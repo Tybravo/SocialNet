@@ -1,10 +1,11 @@
 
 :root {
-    --blue: #A94455;
+    --wine: #A94455;
+    --wineLight: #ff92a6;
+    --wineFade: #c9919c;
     --buttonHoverBg: #d4edff;
-    /* --lightGrey: rgb(240, 238, 230); */
+    --lightGrey: rgb(240, 238, 230);
     --spacing: 15px;
-    --lightWine: #ff92a6;
 }
 
 
@@ -41,21 +42,46 @@ nav a {
     justify-content: center;
 }
 
-nav a.blue {
-    color: var(--blue);
+nav a.wine {
+    color: var(--wine);
 }
 
 nav a:hover {
     background-color: var(--buttonHoverBg);
-    color: var(--blue);
+    color: var(--wine);
     border-radius: 50%;
 }
 
+nav.col-2{
+    /* background-color: #b3b3b3; */
+}
+
+textarea {
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 2px solid #000000;
+    background-color: #f2f2f2;
+}
+
+textarea:hover {
+    border-color: #ad6471; 
+}
+
+textarea:focus {
+    border-color: #A94455;
+    background-color: #ffffff;
+    outline: none;
+    -moz-box-shadow: 0px 10px 14px -7px #A94455;
+    -webkit-box-shadow: 0px 10px 14px -7px #A94455;
+    box-shadow: 0px 10px 14px -7px #A94455;
+}
 
 .mainSectionContainer {
     padding:  0;
-    border-left: 1px solid var(--lightWine);
-    border-right: 1px solid var(--lightWine);
+    border-left: 1px solid var(--wineLight);
+    border-right: 1px solid var(--wineLight);
     display: flex;
     flex-direction: column;
 }
@@ -65,7 +91,7 @@ nav a:hover {
     padding: 0 var(--spacing);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--lightWine);
+    border-bottom: 1px solid var(--wineLight);
     flex-shrink: 0;
 }
 
@@ -76,7 +102,7 @@ nav a:hover {
 .postFormContainer {
     display: flex;
     padding: var(--spacing);
-    border-bottom: 10px solid rgb(255, 146, 166);
+    border-bottom: 10px solid var(--wineFade);
     flex-shrink: 0;
 }
 
@@ -89,4 +115,39 @@ nav a:hover {
     width: 100%;
     border-radius: 50%;
     background-color: white;
+}
+
+.textareaContainer {
+    flex: 1;
+    padding-left: var(--spacing);
+}
+
+.textareaContainer textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 19px;
+}
+
+#submitPostButton {
+    background-color: var(--wine);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 7px 15px;
+}
+
+#submitPostButton:disabled {
+    background-color: var(--wineLight);
+}
+
+
+
+@media (max-width:740px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        height: 100%;
+    }
 }
