@@ -4,5 +4,8 @@ mixin createPostForm(userLoggedIn)
             img(src=userLoggedIn.profilePic, alt="User's profile picture")
         .textareaContainer
             textarea#postTextarea(placeholder="What's going on?")
+            label
+                input#monetiseCheckbox(type="checkbox")
+                | Monetise
             .buttonsContainer
                 button#submitPostButton(disabled="") Post
