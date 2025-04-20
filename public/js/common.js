@@ -3,9 +3,7 @@ $("#postTextarea").keyup(event => {
     var value = textbox.val().trim();
     
     var submitButton = $("#submitPostButton");
-
     if(submitButton.length == 0) return alert("No submit button found");
-
     if (value == "") {
         submitButton.prop("disabled", true);
         return;
@@ -43,44 +41,84 @@ function createPostHtml(postData) {
     var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
 
 
-    return `<div class='post'>
+    let postButtonsHtml = `
+        <div class='postButtonBlock'>
+            <div class='postButtonContainer'>
+                <button>
+                    <i class='far fa-comment'></i>
+                    <span>reply</span>
+                </button>
+            </div>
+            <div class='postButtonContainer'>
+                <button>
+                    <i class='fas fa-retweet'></i>
+                    <span>rezing</span>
+                </button>
+            </div>
+            <div class='postButtonContainer'>
+                <button>
+                    <i class='fa fa-hands-clapping'></i>
+                    <span>bravo</span>
+                </button>
+            </div>
+        </div>`;
 
-                <div class='mainContentContainer'>
-                    <div class='userImageContainer'>
-                        <img src='${postedBy.profilePic}'>
-                    </div>
-                    <div class='postContentContainer'>
-                        <div class='header'>
-                            <a href='/profile/${postedBy.username}'>${displayName}</a>
-                            <span class='username'>@${postedBy.username}</span>
-                            <span class='date'>${timestamp}</span>
-                        </div>
-                        <div class='postBody'>
-                            <span>${postData.content}</span>
-                         <div class='postFooter'>
-                            <div class='postButtonContainer'>
-                                <button>
-                                    <i class='far fa-comment'></i>
-                                    <span>reply</span>
-                                </button>
-                            </div>
-                            <div class='postButtonContainer'>
-                                <button>
-                                    <i class='fas fa-retweet'></i>
-                                    <span>rezing</span>
-                                </button>
-                            </div>
-                            <div class='postButtonContainer'>
-                                <button>
-                                    <i class='fa fa-hands-clapping'></i>
-                                    <span>bravo</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+    if (postData.monetise) {
+        postButtonsHtml = `
+            <div class='postButtonBlock'>
+                <div class='postButtonContainer'>
+                    <button>
+                        <i class='fa fa-money-bill'></i>
+                        <span>tip</span>
+                    </button>
+                </div>
+                <div class='postButtonContainer'>
+                    <button>
+                        <i class='fas fa-retweet'></i>
+                        <span>rezing</span>
+                    </button>
+                </div>
+                <div class='postButtonContainer'>
+                    <button>
+                        <i class='fa fa-hands-clapping'></i>
+                        <span>bravo</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class='unlockButtonBlock'>
+                <div class='unlockButtonWrapper'>
+                    <button class='unlockButton'>
+                        <i class='fa fa-lock'></i>
+                        <span>Unlock Content</span>
+                    </button>
                 </div>
             </div>`;
-}
+        }
+
+        
+        return `<div class='post'>
+            <div class='mainContentContainer'>
+                <div class='userImageContainer'>
+                    <img src='${postedBy.profilePic}'>
+                </div>
+                <div class='postContentContainer'>
+                    <div class='header'>
+                        <a href='/profile/${postedBy.username}'>${displayName}</a>
+                        <span class='username'>@${postedBy.username}</span>
+                        <span class='date'>${timestamp}</span>
+                    </div>
+                    <div class='postBody'>
+                        <span>${postData.content}</span>
+                    </div>
+                    <div class='postFooter'>
+                        ${postButtonsHtml}
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
+
 
 
 function timeDifference(current, previous) {

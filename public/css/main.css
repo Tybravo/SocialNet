@@ -191,10 +191,17 @@ textarea:focus {
     color:var(--wine)
 }
 
-.postFooter {
+/* .postFooter {
     display: flex;
     align-items: center;
+} */
+
+.postFooter {
+    display: flex;
+    flex-direction: column; /* stack rows */
+    gap: 10px; /* space between buttons and unlock */
 }
+
 
 .postFooter .postButtonContainer {
     flex: 1;
@@ -220,6 +227,18 @@ textarea:focus {
     color: var(--wine);
     border-radius: 50%;
 }
+
+/* .postButtonBlock {
+    flex: 1;
+    display: flex;
+} */
+
+.postButtonBlock {
+    display: flex;
+    gap: 10px;
+}
+
+
 
 
 

@@ -31,6 +31,7 @@ const logoutRoute = require('./routes/logoutRoutes');
 // Api routes
 const postsApiRoute = require('./routes/api/posts');
 
+
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 app.use("/logout", logoutRoute);
@@ -39,11 +40,18 @@ app.use("/api/posts", postsApiRoute);
 
 
 app.get("/", middleware.requireLogin, (req, res, next) => {
-
     var payload = {
         pageTitle: "Home",
         userLoggedIn: req.session.user
     }
-
     res.status(200).render("home", payload);
 })
+
+app.get("/monetised", middleware.requireLogin, (req, res, next) => {
+    var payload = {
+        pageTitle: "Premium Posts",
+        userLoggedIn: req.session.user
+    };
+    res.status(200).render("monetised", payload);
+});
+
