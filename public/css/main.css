@@ -53,10 +53,6 @@ nav a:hover {
     border-radius: 50%;
 }
 
-nav.col-2{
-    /* background-color: #b3b3b3; */
-}
-
 button {
     background-color: transparent;
     border: none;
@@ -154,14 +150,13 @@ textarea:focus {
 }
 
 #submitPostButton:disabled {
-    background-color: var(--wineLight);
+    background-color: var(--wineFade);
 }
 
 .post {
     display: flex;
     flex-direction: column;
     padding: var(--spacing);
-    cursor: pointer;
     border-bottom: 1px solid var(--wineLight);
     flex-shrink: 0;
 }
@@ -191,17 +186,11 @@ textarea:focus {
     color:var(--wine)
 }
 
-/* .postFooter {
-    display: flex;
-    align-items: center;
-} */
-
 .postFooter {
     display: flex;
-    flex-direction: column; /* stack rows */
-    gap: 10px; /* space between buttons and unlock */
+    flex-direction: column;
+    gap: 10px;
 }
-
 
 .postFooter .postButtonContainer {
     flex: 1;
@@ -215,7 +204,7 @@ textarea:focus {
 }
 
 .postFooter .postButtonContainer button span {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .header a,
@@ -228,16 +217,32 @@ textarea:focus {
     border-radius: 50%;
 }
 
-/* .postButtonBlock {
-    flex: 1;
-    display: flex;
-} */
-
 .postButtonBlock {
     display: flex;
     gap: 10px;
+    margin-left: -4px;
+    /* flex: 1; */
 }
 
+.unlockButtonBlock {
+    width: 100%;
+}
+
+.unlockButtonWrapper {
+    display: flex;
+}
+
+.unlockButton {
+    border: none;
+    background-color: var(--wineFade);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 3px;
+}
 
 
 

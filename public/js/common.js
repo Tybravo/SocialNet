@@ -68,8 +68,8 @@ function createPostHtml(postData) {
             <div class='postButtonBlock'>
                 <div class='postButtonContainer'>
                     <button>
-                        <i class='fa fa-money-bill'></i>
-                        <span>tip</span>
+                        <i class="fa fa-comment-dollar"></i>
+                        <span>coin</span>
                     </button>
                 </div>
                 <div class='postButtonContainer'>
@@ -90,7 +90,7 @@ function createPostHtml(postData) {
                 <div class='unlockButtonWrapper'>
                     <button class='unlockButton'>
                         <i class='fa fa-lock'></i>
-                        <span>Unlock Content</span>
+                        <span>Unlock Zing</span>
                     </button>
                 </div>
             </div>`;
