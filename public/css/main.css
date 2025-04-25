@@ -182,6 +182,11 @@ textarea:focus {
     font-weight: bold;
 }
 
+.postContentContainer .username {
+    font-weight: bold;
+    /* color: #000000; */
+}
+
 .postContentContainer .header a:hover {
     color:var(--wine)
 }
