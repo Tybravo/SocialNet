@@ -7,6 +7,18 @@
         display: flex;
         justify-content: center;
         margin-top: 100px;
+        position: relative;
+        z-index: 1;
+    }
+
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        top: 0;
+        left: 0;
+        z-index: -1;
     }
 
     .logoContainer{
@@ -105,10 +117,12 @@
 
     .logoIcon {
         font-size: 150px;
-        color: #333;
+        color: #A94455;
         margin-top: 40px;
         margin-bottom: 5px;
     }
+
+
 
 
 
@@ -116,9 +130,11 @@
     .loginWrapper {
         display: flex;
         flex-direction: column;
-        align-items: center; /* optional, centers child elements */
+        align-items: center;
         width: 100%;
         margin-top: 0px;
+        position: relative;
+        z-index: 1;
     }
 
     .RegLogoContainer{
@@ -163,9 +179,19 @@
 
     .logoIcon {
         font-size: 80px;
-        color: #333;
+        color: #A94455;
         margin-top: 5px;
         margin-bottom: 5px;
+    }
+
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        top: 0;
+        left: 0;
+        z-index: -1;
     }
 }
 

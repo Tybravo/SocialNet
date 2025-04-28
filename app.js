@@ -7,7 +7,11 @@ const bodyParser = require("body-parser")
 const mongoose = require("./database");
 const session = require("express-session");
 
-const server = app.listen(port, () => console.log("Server listening on port " + port));
+// const server = app.listen(port, () => console.log("Server listening on port " + port));
+if (process.env.NODE_ENV !== "production") {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Server listening on port ${port}`));
+}
 
 
 app.set("view engine", "pug");
@@ -55,3 +59,5 @@ app.get("/monetised", middleware.requireLogin, (req, res, next) => {
     res.status(200).render("monetised", payload);
 });
 
+
+module.exports = app;
