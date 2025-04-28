@@ -38,8 +38,10 @@ router.post("/", async (req, res, next) => {
         return res.status(200).render("login", payload);
     }
 
-    payload.errorMessage = "Make sure each field has a valid value.";
+    payload.errorMessage = "Make sure that each field has a valid value.";
     res.status(200).render("login", payload);
 });
+
+
 
 module.exports = router;
