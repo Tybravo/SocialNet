@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const fs = require('fs'); // Add fs import for debug route
 const middleware = require('./middleware');
 const bodyParser = require("body-parser");
 const mongoose = require("./database");
@@ -53,6 +54,17 @@ app.get("/monetised", middleware.requireLogin, (req, res, next) => {
         userLoggedIn: req.session.user
     };
     res.status(200).render("monetised", payload);
+});
+
+// Debug route to list views directory contents
+app.get('/debug-views', (req, res) => {
+    const viewsDir = app.get('views');
+    fs.readdir(viewsDir, (err, files) => {
+        if (err) {
+            return res.status(500).send(`Error reading views directory: ${err.message}`);
+        }
+        res.status(200).json({ viewsDir, files });
+    });
 });
 
 // Only start local server if NOT on Vercel
