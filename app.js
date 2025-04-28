@@ -65,7 +65,7 @@ app.get('/debug-views', (req, res) => {
   });
 });
 
-// Vercel serverless export
+// Vercel serverless export is here
 module.exports = app;
 
 // Server for local development
