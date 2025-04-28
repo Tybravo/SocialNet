@@ -53,6 +53,18 @@ app.get('/monetised', middleware.requireLogin, (req, res, next) => {
   res.status(200).render('monetised', payload);
 });
 
+// Debug route to list files in views directory
+const fs = require('fs');
+app.get('/debug-views', (req, res) => {
+  const viewsDir = path.join(__dirname, 'views');
+  fs.readdir(viewsDir, (err, files) => {
+    if (err) {
+      return res.status(500).send(`Error reading views directory: ${err.message}`);
+    }
+    res.status(200).send(`Files in views directory: ${files.join(', ')}`);
+  });
+});
+
 // Vercel serverless export
 module.exports = app;
 
