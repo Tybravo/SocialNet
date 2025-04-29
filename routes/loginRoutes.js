@@ -36,7 +36,7 @@ router.post("/", async (req, res, next) => {
 
       if (result === true) {
         req.session.user = user;
-        console.log('Login successful - Session user set:', req.session.user);
+        // console.log('Login successful - Session user set:', req.session.user);
         // Explicitly save the session before redirecting
         req.session.save((err) => {
           if (err) {
@@ -44,7 +44,7 @@ router.post("/", async (req, res, next) => {
             payload.errorMessage = "Session error.";
             return res.status(500).render("login", payload);
           }
-          console.log('Session saved after login, redirecting to /');
+        //   console.log('Session saved after login, redirecting to /');
           return res.redirect("/");
         });
         return; // Prevent further execution

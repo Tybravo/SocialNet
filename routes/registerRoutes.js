@@ -40,7 +40,7 @@ router.post("/", async (req, res, next) => {
         // Create the user
         const newUser = await User.create(data);
         req.session.user = newUser;
-        console.log('Registration successful - Session user set:', req.session.user);
+        // console.log('Registration successful - Session user set:', req.session.user);
         // Explicitly save the session before redirecting
         req.session.save((err) => {
           if (err) {
@@ -48,11 +48,12 @@ router.post("/", async (req, res, next) => {
             payload.errorMessage = "Session error.";
             return res.status(500).render("register", payload);
           }
-          console.log('Session saved after registration, redirecting to /');
+          //console.log('Session saved after registration, redirecting to /');
           return res.redirect("/");
         });
         return; // Prevent further execution
       } else {
+        
         // User found
         if (email == user.email) {
           payload.errorMessage = "Email already in use.";

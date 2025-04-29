@@ -15,8 +15,8 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 app.set('trust proxy', 1); // Trust Vercel's proxy
 
-// Log views directory for debugging
-console.log('Views directory:', app.get('views'));
+//Log views directory for debugging
+//console.log('Views directory:', app.get('views'));
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,10 +40,10 @@ app.use(
 );
 
 // Add this right after the session middleware in app.js
-app.use((req, res, next) => {
-    console.log('Session on request:', req.session);
-    next();
-  });
+// app.use((req, res, next) => {
+//     console.log('Session on request:', req.session);
+//     next();
+//   });
 
 // Routes
 const loginRoute = require('./routes/loginRoutes');
@@ -56,6 +56,7 @@ app.use('/register', registerRoute);
 app.use('/logout', logoutRoute);
 app.use('/api/posts', postsApiRoute);
 
+
 // Home route
 app.get('/', middleware.requireLogin, (req, res, next) => {
   const payload = {
@@ -65,6 +66,7 @@ app.get('/', middleware.requireLogin, (req, res, next) => {
   res.status(200).render('home', payload);
 });
 
+
 // Monetised route
 app.get('/monetised', middleware.requireLogin, (req, res, next) => {
   const payload = {
@@ -73,6 +75,7 @@ app.get('/monetised', middleware.requireLogin, (req, res, next) => {
   };
   res.status(200).render('monetised', payload);
 });
+
 
 // Debug route to list files in views directory
 const fs = require('fs');
@@ -86,8 +89,10 @@ app.get('/debug-views', (req, res) => {
   });
 });
 
+
 // Vercel serverless export
 module.exports = app;
+
 
 // Server for local development
 if (process.env.NODE_ENV !== 'production') {
