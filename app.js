@@ -13,6 +13,7 @@ require('dotenv').config();
 // Set view engine and views directory
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+app.set('trust proxy', 1); // Trust Vercel's proxy
 
 // Log views directory for debugging
 console.log('Views directory:', app.get('views'));
@@ -30,8 +31,8 @@ app.use(
       collectionName: 'sessions',
     }),
     cookie: {
-      //secure: process.env.NODE_ENV === 'production',
-      secure: false, // Temporarily disable secure to test
+      secure: process.env.NODE_ENV === 'production',
+      //secure: false, // Temporarily disable secure to test
       maxAge: 1000 * 60 * 60 * 24, // 1 day
       sameSite: 'lax', // Helps with redirects
     },
