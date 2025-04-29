@@ -5,7 +5,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('./database');
 const session = require('express-session');
-const MongoStore = require('connect-mongo'); // Add this line
+const MongoStore = require('connect-mongo');
+
+// Load environment variables
+require('dotenv').config();
 
 // Set view engine and views directory
 app.set('view engine', 'pug');
@@ -23,12 +26,12 @@ app.use(
     resave: true,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongooseConnection: mongoose.connection, // Use the existing Mongoose connection
-      collectionName: 'sessions', // Optional: specify the collection name for sessions
+      mongoUrl: process.env.MONGO_URI, // Use the MONGO_URI environment variable
+      collectionName: 'sessions',
     }),
     cookie: {
-      secure: process.env.NODE_ENV === 'production', // Set secure cookies in production (Vercel)
-      maxAge: 1000 * 60 * 60 * 24, // 1 day (adjust as needed)
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
   })
 );
