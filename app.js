@@ -36,6 +36,12 @@ app.use(
   })
 );
 
+// Add this right after the session middleware in app.js
+app.use((req, res, next) => {
+    console.log('Session on request:', req.session);
+    next();
+  });
+  
 // Routes
 const loginRoute = require('./routes/loginRoutes');
 const registerRoute = require('./routes/registerRoutes');
