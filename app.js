@@ -30,8 +30,8 @@ app.use(
       collectionName: 'sessions',
     }),
     cookie: {
-      //secure: process.env.NODE_ENV === 'production',
-      secure: false, // Temporarily disable secure to test
+      secure: process.env.NODE_ENV === 'production',
+      //secure: false, // Temporarily disable secure to test
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
   })
