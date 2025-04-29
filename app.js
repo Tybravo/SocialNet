@@ -14,9 +14,6 @@ require('dotenv').config();
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-app.set('trust proxy', 1); // Trust Vercel's proxy
-
-
 // Log views directory for debugging
 console.log('Views directory:', app.get('views'));
 
@@ -26,13 +23,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
     secret: 'bbq chips',
-    resave: false,
+    resave: true,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI, // Use the MONGO_URI environment variable
+      collectionName: 'sessions',
+    }),
     cookie: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 86400000, // 1 day
-        sameSite: 'lax'
+      //secure: process.env.NODE_ENV === 'production',
+      secure: false, // Temporarily disable secure to test
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      sameSite: 'lax', // Helps with redirects
     },
   })
 );
